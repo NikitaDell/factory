@@ -13,23 +13,29 @@ protected:
     Transport(int _numWheels, int _maxSpeed) : numWheels(_numWheels), maxSpeed(_maxSpeed) {};
 
 public:
-    Transport() : numWheels(0), maxSpeed(0) {};
+    Transport();
+    virtual void printSpecifications(); // Вывод свойств транспорта на терминал
 
-    virtual void printSpecifications()
-    {
-        if(this->getTypeOfTransport() == "Неизвестно")
-            std::cout << "Неизвестный тип транспорта." << std::endl;
+    virtual std::string getTypeOfTransport();
 
-        else
-            std::cout << "Тип транспорта: " << this->getTypeOfTransport()
-                      << "\nКоличество колес: " << this->numWheels
-                      << "\nМаксимальная скорость: " << this->maxSpeed << " км/ч." << std::endl;
-    };
-    virtual std::string getTypeOfTransport()
-    {
-        return "Неизвестно";
-    };
+};
 
+Transport :: Transport() : numWheels(0), maxSpeed(0) {}
+
+void Transport :: printSpecifications()
+{
+    if(this->getTypeOfTransport() == "Неизвестно")
+        std::cout << "Неизвестный тип транспорта." << std::endl;
+
+    else
+        std::cout << "Тип транспорта: " << this->getTypeOfTransport()
+                  << "\nКоличество колес: " << this->numWheels
+                  << "\nМаксимальная скорость: " << this->maxSpeed << " км/ч." << std::endl;
+};
+
+std::string Transport :: getTypeOfTransport()
+{
+    return "Неизвестно";
 };
 
 #endif

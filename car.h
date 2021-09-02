@@ -7,14 +7,24 @@ class Car : public Transport
 {
     std::string typeOfGearbox; // Тип коробки передач
 public:
-    Car() :  Transport(4, 150), typeOfGearbox("Механическая") {};
-    std::string getTypeOfTransport() {return "Автомобиль";};
-
-    void printSpecifications()
-    {
-        this->Transport::printSpecifications();
-        std::cout << "Тип коробки передач: " << this->typeOfGearbox << std::endl;
-    }
+    Car();
+    std::string getTypeOfTransport();
+    void printSpecifications();
 };
+
+Car::Car() :  Transport(4, 150), typeOfGearbox("Механическая") 
+{
+};
+
+std::string Car::getTypeOfTransport() 
+{
+    return "Автомобиль";
+};
+
+void Car::printSpecifications()
+{
+    this->Transport::printSpecifications();
+    std::cout << "Тип коробки передач: " << this->typeOfGearbox << std::endl;
+}
 
 #endif
